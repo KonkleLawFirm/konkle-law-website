@@ -1,5 +1,35 @@
 "use strict";
 
+const KONKLE_GA_MEASUREMENT_ID = "G-P3SLMXCVTH";
+
+const initializeKonkleAnalytics = () => {
+  if (document.querySelector("script[data-konkle-google-tag]")) {
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  window.gtag("js", new Date());
+  window.gtag("config", KONKLE_GA_MEASUREMENT_ID, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    page_location: `${window.location.origin}${window.location.pathname}`,
+    page_path: window.location.pathname
+  });
+
+  const googleTag = document.createElement("script");
+  googleTag.async = true;
+  googleTag.src =
+    `https://www.googletagmanager.com/gtag/js?id=${KONKLE_GA_MEASUREMENT_ID}`;
+  googleTag.dataset.konkleGoogleTag = "true";
+  document.head.appendChild(googleTag);
+};
+
+initializeKonkleAnalytics();
+
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const header = document.querySelector(".site-header");
@@ -21,6 +51,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPath = normalizePath(window.location.pathname);
 
+  const sendAnalyticsEvent = (eventName, parameters = {}) => {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    window.gtag("event", eventName, {
+      page_path: currentPath,
+      ...parameters
+    });
+  };
+
+  const getLinkLocation = (link) => {
+    if (link.closest(".mobile-menu-actions")) {
+      return "mobile_menu";
+    }
+
+    if (link.closest(".top-bar")) {
+      return "top_bar";
+    }
+
+    if (link.closest(".site-header")) {
+      return "header";
+    }
+
+    if (link.closest(".site-footer")) {
+      return "footer";
+    }
+
+    return "page_content";
+  };
+
+  const setupAnalyticsTracking = () => {
+    document.addEventListener("click", (event) => {
+      const target =
+        event.target instanceof Element ? event.target : null;
+      const link = target ? target.closest("a[href]") : null;
+
+      if (!link) {
+        return;
+      }
+
+      const href = link.getAttribute("href") || "";
+      const linkLocation = getLinkLocation(link);
+
+      if (href.toLowerCase().startsWith("tel:")) {
+        sendAnalyticsEvent("phone_click", {
+          link_location: linkLocation
+        });
+        return;
+      }
+
+      if (href.toLowerCase().startsWith("sms:")) {
+        sendAnalyticsEvent("text_click", {
+          link_location: linkLocation
+        });
+        return;
+      }
+
+      if (
+        href.includes("contact.html#intake-form") ||
+        href === "#intake-form"
+      ) {
+        sendAnalyticsEvent("intake_cta_click", {
+          link_location: linkLocation
+        });
+      }
+    });
+
+    if (currentPath === "/thank-you.html") {
+      const leadSessionKey = "konkle_intake_lead_recorded";
+
+      try {
+        if (!window.sessionStorage.getItem(leadSessionKey)) {
+          sendAnalyticsEvent("generate_lead", {
+            method: "website_intake_form"
+          });
+          window.sessionStorage.setItem(leadSessionKey, "true");
+        }
+      } catch (error) {
+        sendAnalyticsEvent("generate_lead", {
+          method: "website_intake_form"
+        });
+      }
+    }
+  };
 
   const addMobileMenuStyles = () => {
     if (document.getElementById("konkle-mobile-menu-styles")) {
@@ -461,6 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addOrUpdateSeo();
   addResourcesLinks();
   addLegalServiceSchema();
+  setupAnalyticsTracking();
 
   if (header) {
     const updateHeader = () => {
