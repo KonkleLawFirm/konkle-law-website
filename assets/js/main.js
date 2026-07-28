@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           align-items: center;
           margin-right: auto;
           margin-left: 0.55rem;
-          color: var(--white);
+          color: var(--black);
           font-family: var(--serif);
           font-size: clamp(0.82rem, 3.3vw, 1rem);
           font-weight: 700;
@@ -54,10 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
           text-transform: uppercase;
         }
 
-        .site-header:not(.is-scrolled) .mobile-firm-name {
-          color: var(--white);
-        }
-
+        .site-header:not(.is-scrolled) .mobile-firm-name,
         .site-header.is-scrolled .mobile-firm-name {
           color: var(--black);
         }
