@@ -21,6 +21,144 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPath = normalizePath(window.location.pathname);
 
+
+  const addMobileMenuStyles = () => {
+    if (document.getElementById("konkle-mobile-menu-styles")) {
+      return;
+    }
+
+    const style = document.createElement("style");
+    style.id = "konkle-mobile-menu-styles";
+    style.textContent = `
+      .mobile-menu-actions {
+        display: none;
+      }
+
+      @media (max-width: 940px) {
+        .main-navigation {
+          top: 78px;
+          bottom: auto;
+          width: 100%;
+          height: calc(100vh - 78px);
+          height: calc(100dvh - 78px);
+          max-height: calc(100vh - 78px);
+          max-height: calc(100dvh - 78px);
+          padding: 0.75rem 1rem calc(1rem + env(safe-area-inset-bottom));
+          overflow-x: hidden;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          box-shadow: 0 24px 50px rgba(0, 0, 0, 0.16);
+        }
+
+        .main-navigation > a {
+          flex: 0 0 auto;
+          padding: clamp(0.72rem, 2vh, 1rem) 0.25rem;
+          font-size: clamp(1.22rem, 5vw, 1.65rem);
+          line-height: 1.08;
+        }
+
+        .mobile-menu-actions {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          flex: 0 0 auto;
+          width: 100%;
+          gap: 0.65rem;
+          margin-top: 0.85rem;
+          padding-top: 0.85rem;
+          border-top: 1px solid var(--border-light);
+        }
+
+        .main-navigation .mobile-menu-actions a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          min-height: 46px;
+          padding: 0.7rem 0.6rem;
+          border: 1px solid var(--black);
+          background: transparent;
+          color: var(--black);
+          font-family: var(--sans);
+          font-size: 0.68rem;
+          font-weight: 800;
+          letter-spacing: 0.075em;
+          line-height: 1.2;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+
+        .main-navigation .mobile-menu-actions a::after {
+          display: none;
+        }
+
+        .main-navigation .mobile-menu-actions .mobile-intake-link {
+          grid-column: 1 / -1;
+          border-color: var(--black);
+          background: var(--black);
+          color: var(--white);
+        }
+
+        .main-navigation .mobile-menu-actions a:active {
+          transform: translateY(1px);
+        }
+      }
+
+      @media (max-width: 940px) and (max-height: 700px) {
+        .main-navigation {
+          padding-top: 0.4rem;
+        }
+
+        .main-navigation > a {
+          padding: 0.58rem 0.2rem;
+          font-size: clamp(1.05rem, 4.4vw, 1.3rem);
+        }
+
+        .mobile-menu-actions {
+          gap: 0.5rem;
+          margin-top: 0.55rem;
+          padding-top: 0.55rem;
+        }
+
+        .main-navigation .mobile-menu-actions a {
+          min-height: 40px;
+          padding: 0.5rem;
+          font-size: 0.62rem;
+        }
+      }
+
+      @media (max-width: 940px) and (max-height: 540px) {
+        .main-navigation {
+          padding-top: 0.2rem;
+        }
+
+        .main-navigation > a {
+          padding: 0.4rem 0.2rem;
+          font-size: 1rem;
+        }
+
+        .mobile-menu-actions {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 0.4rem;
+          margin-top: 0.4rem;
+          padding-top: 0.4rem;
+        }
+
+        .main-navigation .mobile-menu-actions .mobile-intake-link {
+          grid-column: auto;
+        }
+
+        .main-navigation .mobile-menu-actions a {
+          min-height: 38px;
+          padding: 0.4rem 0.25rem;
+          font-size: 0.56rem;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  };
+
   const pageMetadata = {
     "/": {
       title:
@@ -319,6 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.textContent = String(new Date().getFullYear());
   });
 
+  addMobileMenuStyles();
   addOrUpdateSeo();
   addResourcesLinks();
   addLegalServiceSchema();
@@ -357,6 +496,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   headerInner.insertBefore(menuButton, navigation);
 
+
+  let mobileMenuActions = navigation.querySelector(
+    ".mobile-menu-actions"
+  );
+
+  if (!mobileMenuActions) {
+    mobileMenuActions = document.createElement("div");
+    mobileMenuActions.className = "mobile-menu-actions";
+    mobileMenuActions.setAttribute("aria-label", "Quick contact options");
+
+    const callLink = document.createElement("a");
+    callLink.href = "tel:+12392693587";
+    callLink.textContent = "Call the Firm";
+
+    const textLink = document.createElement("a");
+    textLink.href = "sms:+12392693587";
+    textLink.textContent = "Text the Firm";
+
+    const intakeLink = document.createElement("a");
+    intakeLink.className = "mobile-intake-link";
+    intakeLink.href = "contact.html#intake-form";
+    intakeLink.textContent = "Start Your Intake";
+
+    mobileMenuActions.append(callLink, textLink, intakeLink);
+    navigation.appendChild(mobileMenuActions);
+  }
+
   const closeMenu = () => {
     navigation.classList.remove("is-open");
     body.classList.remove("menu-open");
@@ -368,6 +534,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const openMenu = () => {
     navigation.classList.add("is-open");
     body.classList.add("menu-open");
+    navigation.scrollTop = 0;
     menuButton.textContent = "Close";
     menuButton.setAttribute("aria-expanded", "true");
     menuButton.setAttribute("aria-label", "Close navigation menu");
