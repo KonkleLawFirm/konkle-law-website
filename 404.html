@@ -6,75 +6,173 @@
 
   <title>Page Not Found | Konkle Law Firm</title>
 
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#080808">
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/images/law-firm-favicon.png"
+  >
 
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/legal.css">
+
   <script src="assets/js/main.js" defer></script>
 </head>
 
 <body>
-  <header>
-    <a href="index.html" aria-label="Konkle Law Firm home">
-      Konkle Law Firm
-    </a>
 
-    <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="criminal-defense.html">Criminal Defense</a>
-      <a href="personal-injury.html">Personal Injury</a>
-      <a href="attorney.html">Attorney</a>
-      <a href="contact.html">Contact</a>
-      <a href="payments.html">Client Payments</a>
-    </nav>
+  <a class="skip-link" href="#main-content">
+    Skip to main content
+  </a>
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <p>Criminal Defense and Personal Injury Representation</p>
+      <a href="tel:+12392693587">(239) 269-3587</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Konkle Law Firm homepage">
+        <img
+          src="assets/images/law-firm-logo.webp"
+          alt=""
+          width="713"
+          height="713"
+        >
+        <span class="brand-copy">
+          <strong>Konkle</strong>
+          <span>Law Firm</span>
+        </span>
+      </a>
+
+      <nav
+        id="main-navigation"
+        class="main-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="attorney.html">Attorney</a>
+        <a href="criminal-defense.html">Criminal Defense</a>
+        <a href="personal-injury.html">Personal Injury</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="header-cta" href="contact.html#intake-form">
+        Start Your Intake
+      </a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Error 404</p>
-      <h1>Page Not Found</h1>
+  <main id="main-content">
+    <section class="not-found">
+      <div class="legal-page-shell">
+        <p class="section-label">Error 404</p>
+        <h1>We could not find that page.</h1>
+        <p>
+          The page may have been moved, renamed, or removed. Use the links
+          below to return to the website or contact the firm.
+        </p>
 
-      <p>
-        The page you requested may have been moved, renamed, or removed.
-      </p>
+        <div class="not-found-actions">
+          <a class="button button-gold" href="index.html">
+            Return to Homepage
+          </a>
 
-      <div class="button-group">
-        <a class="button" href="index.html">Return to Homepage</a>
-
-        <a class="button button-secondary" href="contact.html">
-          Contact the Firm
-        </a>
+          <a class="legal-outline-button" href="contact.html">
+            Contact the Firm
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <section>
-      <h2>Konkle Law Firm, PLLC</h2>
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a
+          class="brand brand-footer"
+          href="index.html"
+          aria-label="Konkle Law Firm homepage"
+        >
+          <img
+            src="assets/images/law-firm-logo.webp"
+            alt=""
+            width="713"
+            height="713"
+            loading="lazy"
+          >
+          <span class="brand-copy">
+            <strong>Konkle</strong>
+            <span>Law Firm</span>
+          </span>
+        </a>
 
-      <address>
-        [OFFICE ADDRESS]<br>
-        [CITY, STATE ZIP]
-      </address>
+        <p>
+          Personal counsel and serious representation in criminal-defense
+          and personal-injury matters.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h2>Practice Areas</h2>
+        <a href="criminal-defense.html">Criminal Defense</a>
+        <a href="personal-injury.html">Personal Injury</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Firm</h2>
+        <a href="attorney.html">Keith A. Konkle</a>
+        <a href="contact.html#intake-form">Start Your Intake</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Existing Clients</h2>
+        <a href="payments.html">Client Payments</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Legal Disclaimer</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>Contact</h2>
+        <a href="tel:+12392693587">(239) 269-3587</a>
+        <a href="sms:+12392693587">Text the Firm</a>
+        <a href="mailto:Keith@konklelawfirm.com">
+          Keith@konklelawfirm.com
+        </a>
+        <p>
+          3080 Tamiami Trail E.<br>
+          Suite 301<br>
+          Naples, FL 34112
+        </p>
+        <p>By appointment only</p>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <p>
+        The information on this website is provided for general informational
+        purposes only and does not constitute legal advice. Viewing this
+        website or contacting Konkle Law Firm does not create an
+        attorney-client relationship. Representation begins only after the
+        firm accepts the matter and the required agreement is completed.
+      </p>
 
       <p>
-        <a href="tel:+1[PHONE DIGITS]">[PHONE NUMBER]</a><br>
-        <a href="mailto:[EMAIL ADDRESS]">[EMAIL ADDRESS]</a>
+        Past results do not guarantee or predict a similar result in any
+        future matter.
       </p>
-    </section>
 
-    <nav aria-label="Footer navigation">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="disclaimer.html">Legal Disclaimer</a>
-      <a href="payments.html">Client Payments</a>
-    </nav>
-
-    <p>
-      The information on this website is general information and is not legal
-      advice. Viewing this website or contacting the firm does not create an
-      attorney-client relationship. Past results do not guarantee future results.
-    </p>
-
-    <p>&copy; 2026 Konkle Law Firm, PLLC. All rights reserved.</p>
+      <p>
+        &copy; <span data-current-year>2026</span>
+        KONKLE LAW FIRM, PLLC. All rights reserved.
+      </p>
+    </div>
   </footer>
+
 </body>
 </html>
