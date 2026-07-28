@@ -1,1 +1,848 @@
+.home-page-shell {
+  width: min(calc(100% - 3rem), var(--max-width));
+  margin: 0 auto;
+}
 
+/* Hero */
+
+.home-hero {
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(199, 161, 86, 0.15),
+      transparent 28%
+    ),
+    linear-gradient(
+      115deg,
+      #050505 0%,
+      #090909 62%,
+      #14110c 100%
+    );
+  color: var(--white);
+}
+
+.home-hero-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  align-items: center;
+  width: min(calc(100% - 3rem), var(--max-width));
+  min-height: 720px;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 8vw, 8rem) 0;
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-right: clamp(2rem, 6vw, 6rem);
+}
+
+.home-hero .section-label {
+  color: var(--gold-light);
+}
+
+.home-hero h1 {
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.home-hero h1 span {
+  display: block;
+  color: var(--gold-light);
+}
+
+.home-hero-summary {
+  max-width: 700px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1.08rem, 1.8vw, 1.3rem);
+  line-height: 1.75;
+}
+
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.home-outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0.9rem 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--white);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.home-outline-button:hover,
+.home-outline-button:focus-visible {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+.home-direct-contact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.home-direct-contact a {
+  color: var(--gold-light);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.home-direct-contact a:hover,
+.home-direct-contact a:focus-visible {
+  color: var(--white);
+}
+
+.home-direct-contact span {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.home-response-note {
+  max-width: 650px;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+.home-hero-portrait {
+  position: relative;
+  align-self: end;
+}
+
+.home-hero-portrait::before {
+  position: absolute;
+  top: 5%;
+  right: -10%;
+  width: 90%;
+  height: 85%;
+  border: 1px solid rgba(199, 161, 86, 0.3);
+  content: "";
+}
+
+.home-portrait-frame {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  background: #141414;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+}
+
+.home-portrait-frame img {
+  width: 100%;
+  height: min(65vw, 610px);
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.88) contrast(1.03);
+}
+
+.home-portrait-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem 1.6rem;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.94),
+      rgba(0, 0, 0, 0.2)
+    );
+}
+
+.home-portrait-caption p {
+  margin: 0;
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1.55rem;
+}
+
+.home-portrait-caption span {
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-hero-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: min(calc(100% - 3rem), var(--max-width));
+  margin: 0 auto;
+  border-top: 1px solid var(--border-dark);
+}
+
+.home-hero-services > a {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: 120px;
+  padding: 1.5rem 2rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.home-hero-services > a + a {
+  border-left: 1px solid var(--border-dark);
+}
+
+.home-hero-services > a:hover,
+.home-hero-services > a:focus-visible {
+  background: rgba(199, 161, 86, 0.08);
+}
+
+.home-service-number {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 1.6rem;
+}
+
+.home-hero-services strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.home-hero-services small {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.54);
+}
+
+/* Intro */
+
+.home-intro {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background: var(--cream);
+}
+
+.home-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.35fr) minmax(0, 1.65fr);
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.home-intro h2 {
+  max-width: 1050px;
+}
+
+.home-large-copy {
+  max-width: 850px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  line-height: 1.55;
+}
+
+.home-intro .text-link {
+  margin-top: 1.5rem;
+}
+
+/* Shared section heading */
+
+.home-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.home-section-heading h2 {
+  max-width: 900px;
+  margin-bottom: 0;
+}
+
+.home-section-heading > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Practice areas */
+
+.home-practices {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background: var(--cream-light);
+}
+
+.home-practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-practice-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 720px;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.home-practice-criminal {
+  background: var(--black);
+  color: var(--white);
+}
+
+.home-practice-injury {
+  border: 1px solid var(--border-light);
+  background: var(--cream);
+  color: var(--black);
+}
+
+.home-practice-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid currentColor;
+}
+
+.home-practice-criminal .home-practice-top {
+  border-color: var(--border-dark);
+}
+
+.home-practice-injury .home-practice-top {
+  border-color: var(--border-light);
+}
+
+.home-practice-top span {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+}
+
+.home-practice-top p {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.home-practice-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: 3rem;
+}
+
+.home-practice-body h3 {
+  max-width: 600px;
+}
+
+.home-practice-criminal h3 {
+  color: var(--white);
+}
+
+.home-practice-body > p {
+  max-width: 650px;
+  color: var(--muted);
+}
+
+.home-practice-criminal .home-practice-body > p,
+.home-practice-criminal li {
+  color: rgba(255, 255, 255, 0.67);
+}
+
+.home-practice-body ul {
+  margin: 1.5rem 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.home-practice-body li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--muted);
+}
+
+.home-practice-criminal li {
+  border-color: var(--border-dark);
+}
+
+.home-practice-body .text-link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.home-practice-disclaimer {
+  max-width: 950px;
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* Approach */
+
+.home-approach {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background: var(--white);
+}
+
+.home-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.home-approach-grid article {
+  padding: 2.75rem 2rem 3.25rem;
+}
+
+.home-approach-grid article + article {
+  border-left: 1px solid var(--border-light);
+}
+
+.home-approach-grid article > span {
+  display: block;
+  margin-bottom: 2rem;
+  color: var(--gold-dark);
+  font-family: var(--serif);
+  font-size: 1.45rem;
+}
+
+.home-approach-grid h3 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.65rem, 2.3vw, 2.3rem);
+}
+
+.home-approach-grid p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Attorney */
+
+.home-attorney {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.9fr) minmax(0, 1.1fr);
+  min-height: 760px;
+  background: var(--cream);
+}
+
+.home-attorney-image {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.home-attorney-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-attorney-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding:
+    clamp(4rem, 8vw, 8rem)
+    clamp(2rem, 7vw, 7rem);
+}
+
+.home-attorney-content h2 {
+  max-width: 750px;
+}
+
+.home-attorney-content > p:not(.section-label) {
+  max-width: 750px;
+  color: var(--muted);
+}
+
+.home-education {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gold-dark);
+  color: var(--black) !important;
+  font-weight: 700;
+}
+
+.home-dark-button {
+  margin-top: 2rem;
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--white);
+}
+
+.home-dark-button:hover,
+.home-dark-button:focus-visible {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* Locations */
+
+.home-locations {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  background: var(--cream-light);
+}
+
+.home-locations-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.home-locations h2 {
+  max-width: 700px;
+}
+
+.home-location-list {
+  border-top: 1px solid var(--border-light);
+}
+
+.home-location-list > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.home-location-list span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.home-location-list strong {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  text-align: right;
+}
+
+/* Consultation */
+
+.home-consultation {
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(199, 161, 86, 0.12),
+      transparent 28%
+    ),
+    var(--black);
+  color: var(--white);
+}
+
+.home-consultation-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.home-consultation .section-label {
+  color: var(--gold-light);
+}
+
+.home-consultation h2 {
+  max-width: 750px;
+}
+
+.home-consultation p:not(.section-label) {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.home-consultation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+.home-consultation-actions > a:not(.button) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.home-consultation-actions > a:not(.button):hover strong,
+.home-consultation-actions > a:not(.button):focus-visible strong {
+  color: var(--gold-light);
+}
+
+.home-consultation-actions .button {
+  margin-bottom: 1.5rem;
+}
+
+.home-consultation-actions span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-consultation-actions strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: right;
+  transition: color 160ms ease;
+}
+
+/* Office */
+
+.home-office {
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  background: var(--cream);
+}
+
+.home-office-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.home-office address {
+  margin: 2rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.home-office p:not(.section-label) {
+  color: var(--muted);
+}
+
+.home-hours h3 {
+  font-size: 2rem;
+}
+
+.home-hours dl {
+  margin: 0;
+}
+
+.home-hours dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.home-hours dt {
+  font-weight: 700;
+}
+
+.home-hours dd {
+  margin: 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* Tablet */
+
+@media (max-width: 1050px) {
+  .home-hero-shell {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  }
+
+  .home-approach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-approach-grid article:nth-child(3) {
+    border-top: 1px solid var(--border-light);
+    border-left: 0;
+  }
+
+  .home-approach-grid article:nth-child(4) {
+    border-top: 1px solid var(--border-light);
+  }
+}
+
+@media (max-width: 900px) {
+  .home-hero-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-content {
+    padding-right: 0;
+  }
+
+  .home-hero-portrait {
+    width: min(100%, 600px);
+    margin: 1rem auto 0;
+  }
+
+  .home-portrait-frame img {
+    height: min(120vw, 720px);
+  }
+
+  .home-section-heading,
+  .home-intro-grid,
+  .home-locations-grid,
+  .home-consultation-grid,
+  .home-office-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-practice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-practice-card {
+    min-height: 650px;
+  }
+
+  .home-attorney {
+    grid-template-columns: 1fr;
+  }
+
+  .home-attorney-image {
+    min-height: 720px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .home-page-shell,
+  .home-hero-shell,
+  .home-hero-services {
+    width: min(calc(100% - 2rem), var(--max-width));
+  }
+
+  .home-hero-shell {
+    padding-top: 4rem;
+  }
+
+  .home-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-hero-actions .button,
+  .home-outline-button {
+    width: 100%;
+  }
+
+  .home-direct-contact {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .home-direct-contact > span {
+    display: none;
+  }
+
+  .home-hero-services {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-services > a {
+    min-height: 100px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .home-hero-services > a + a {
+    border-top: 1px solid var(--border-dark);
+    border-left: 0;
+  }
+
+  .home-practice-card {
+    min-height: auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .home-practice-body {
+    min-height: 620px;
+  }
+
+  .home-approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-approach-grid article + article,
+  .home-approach-grid article:nth-child(3),
+  .home-approach-grid article:nth-child(4) {
+    border-top: 1px solid var(--border-light);
+    border-left: 0;
+  }
+
+  .home-attorney-image {
+    min-height: 540px;
+  }
+
+  .home-attorney-content {
+    padding: 4rem 1.5rem;
+  }
+
+  .home-location-list > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .home-location-list strong {
+    text-align: left;
+  }
+
+  .home-consultation-actions > a:not(.button) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .home-consultation-actions strong {
+    text-align: left;
+  }
+
+  .home-hours dl > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .home-hours dd {
+    text-align: left;
+  }
+}
