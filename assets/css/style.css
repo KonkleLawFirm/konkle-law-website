@@ -13,6 +13,7 @@
   --border-dark: rgba(255, 255, 255, 0.16);
   --border-light: #d8d2c7;
   --max-width: 1320px;
+
   --serif:
     "Iowan Old Style",
     "Palatino Linotype",
@@ -20,6 +21,7 @@
     Palatino,
     Georgia,
     serif;
+
   --sans:
     Inter,
     "Helvetica Neue",
@@ -55,6 +57,7 @@ body.menu-open {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -85,6 +88,8 @@ textarea {
 .skip-link:focus {
   transform: translateY(0);
 }
+
+/* Top information bar */
 
 .top-bar {
   position: relative;
@@ -120,6 +125,8 @@ textarea {
   color: var(--white);
 }
 
+/* Header */
+
 .site-header {
   position: sticky;
   z-index: 1000;
@@ -154,9 +161,13 @@ textarea {
 }
 
 .brand img {
+  display: block;
+  flex: 0 0 auto;
   width: 58px;
   height: 58px;
+  max-width: none;
   object-fit: contain;
+  object-position: center;
 }
 
 .brand-copy {
@@ -259,6 +270,8 @@ textarea {
   text-transform: uppercase;
 }
 
+/* Hero */
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -268,7 +281,12 @@ textarea {
       rgba(199, 161, 86, 0.11),
       transparent 31%
     ),
-    linear-gradient(115deg, #050505 0%, #0a0a0a 60%, #111111 100%);
+    linear-gradient(
+      115deg,
+      #050505 0%,
+      #0a0a0a 60%,
+      #111111 100%
+    );
   color: var(--white);
 }
 
@@ -434,12 +452,13 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
 }
 
 .hero-logo::before {
   position: absolute;
-  width: 82%;
-  aspect-ratio: 1;
+  width: min(82%, 500px);
+  aspect-ratio: 1 / 1;
   border: 1px solid rgba(199, 161, 86, 0.2);
   border-radius: 50%;
   content: "";
@@ -448,7 +467,13 @@ h3 {
 .hero-logo img {
   position: relative;
   z-index: 1;
+  display: block;
   width: min(100%, 550px);
+  height: auto;
+  max-height: 550px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center;
   filter:
     drop-shadow(0 35px 45px rgba(0, 0, 0, 0.55))
     drop-shadow(0 0 22px rgba(199, 161, 86, 0.08));
@@ -489,6 +514,8 @@ h3 {
   text-transform: uppercase;
 }
 
+/* General content sections */
+
 .statement-section,
 .practice-section,
 .approach-section,
@@ -520,6 +547,8 @@ h3 {
   font-size: clamp(1.3rem, 2vw, 1.8rem);
   line-height: 1.55;
 }
+
+/* Practice areas */
 
 .practice-section {
   background: var(--cream-light);
@@ -613,6 +642,8 @@ h3 {
   margin-top: auto;
 }
 
+/* Approach */
+
 .approach-section {
   background: var(--white);
 }
@@ -650,6 +681,8 @@ h3 {
   color: var(--muted);
 }
 
+/* Firm feature */
+
 .firm-section {
   display: grid;
   grid-template-columns: minmax(330px, 0.85fr) minmax(0, 1.15fr);
@@ -661,6 +694,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
   overflow: hidden;
   padding: clamp(2rem, 5vw, 5rem);
   background:
@@ -673,7 +707,13 @@ h3 {
 }
 
 .firm-logo-panel img {
+  display: block;
   width: min(100%, 520px);
+  height: auto;
+  max-height: 520px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
 }
 
@@ -694,6 +734,8 @@ h3 {
 .firm-content .text-link {
   margin-top: 2.5rem;
 }
+
+/* Insights */
 
 .insights-section {
   background: var(--cream-light);
@@ -770,6 +812,8 @@ h3 {
   transform: translateX(5px);
 }
 
+/* Contact band */
+
 .contact-band {
   display: flex;
   align-items: center;
@@ -806,6 +850,8 @@ h3 {
   color: var(--white);
 }
 
+/* Footer */
+
 .site-footer {
   padding:
     clamp(4rem, 7vw, 6.5rem)
@@ -828,8 +874,13 @@ h3 {
 }
 
 .brand-footer img {
+  display: block;
+  flex: 0 0 auto;
   width: 72px;
   height: 72px;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 .footer-brand > p {
@@ -885,6 +936,8 @@ h3 {
   outline: 3px solid var(--gold);
   outline-offset: 4px;
 }
+
+/* Tablet */
 
 @media (max-width: 1120px) {
   .header-cta {
@@ -972,6 +1025,8 @@ h3 {
 
   .hero-logo img {
     width: min(82vw, 480px);
+    height: auto;
+    max-height: 480px;
   }
 
   .statement-grid {
@@ -1004,6 +1059,12 @@ h3 {
     min-height: 520px;
   }
 
+  .firm-logo-panel img {
+    width: min(82vw, 480px);
+    height: auto;
+    max-height: 480px;
+  }
+
   .insights-grid {
     grid-template-columns: 1fr;
   }
@@ -1021,6 +1082,8 @@ h3 {
     flex-direction: column;
   }
 }
+
+/* Mobile */
 
 @media (max-width: 720px) {
   .header-inner {
@@ -1062,6 +1125,12 @@ h3 {
     align-self: flex-start;
   }
 
+  .hero-logo img {
+    width: min(88vw, 410px);
+    height: auto;
+    max-height: 410px;
+  }
+
   .hero-footer {
     grid-template-columns: 1fr;
   }
@@ -1095,6 +1164,12 @@ h3 {
     min-height: 420px;
   }
 
+  .firm-logo-panel img {
+    width: min(86vw, 390px);
+    height: auto;
+    max-height: 390px;
+  }
+
   .contact-band-actions,
   .contact-band-actions .button {
     width: 100%;
@@ -1112,6 +1187,11 @@ h3 {
 @media (max-width: 480px) {
   .brand-copy {
     display: none;
+  }
+
+  .brand img {
+    width: 48px;
+    height: 48px;
   }
 
   .footer-top {
